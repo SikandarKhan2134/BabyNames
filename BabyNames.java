@@ -120,12 +120,11 @@ public class BabyNames {
         preparedStatement7.setString(5, "PA");
         preparedStatement7.setInt(6, 476);
         preparedStatement7.execute();
-        //printResults(resultSet);
 
 
         System.out.println("\nAnswer:  ");
 
-        PreparedStatement ps8 = connection.prepareStatement(
+        PreparedStatement preparedStatement8 = connection.prepareStatement(
                 "SELECT * FROM BABYNAMES " +
                         "WHERE NAME =? " +
                         "AND US_STATE =? " +
@@ -134,16 +133,16 @@ public class BabyNames {
                         "FETCH FIRST 2 ROW ONLY"
         );
 
-        ps8.setString(1, "Joseph");
-        ps8.setString(2, "PA");
-        ps8.setString(3, "M");
-        ps8.setInt(4, 476);
-        resultSet = ps8.executeQuery();
+        preparedStatement8.setString(1, "Joseph");
+        preparedStatement8.setString(2, "PA");
+        preparedStatement8.setString(3, "M");
+        preparedStatement8.setInt(4, 476);
+        resultSet = preparedStatement8.executeQuery();
         printResults(resultSet);
 
 
         System.out.println("Write a Query to Delete The Row You Just Added.");
-        PreparedStatement ps9 = connection.prepareStatement(
+        PreparedStatement preparedStatement9 = connection.prepareStatement(
                 "DELETE FROM BABYNAMES " +
                         "WHERE NAME =? " +
                         "AND GENDER = ? " +
@@ -151,17 +150,17 @@ public class BabyNames {
                         "AND DATE_YEAR =? " +
                         "AND NUM_BABIES =?"
         );
-        ps9.setString(1, "Joseph");
-        ps9.setString(2, "M");
-        ps9.setString(3, "PA");
-        ps9.setInt(4, 2016);
-        ps9.setInt(5, 476);
-        ps9.execute();
+        preparedStatement9.setString(1, "Joseph");
+        preparedStatement9.setString(2, "M");
+        preparedStatement9.setString(3, "PA");
+        preparedStatement9.setInt(4, 2016);
+        preparedStatement9.setInt(5, 476);
+        preparedStatement9.execute();
 
 
         System.out.println("\nAnswer:  ");
 
-        PreparedStatement ps10 = connection.prepareStatement(
+        PreparedStatement preparedStatement10 = connection.prepareStatement(
                 "SELECT * FROM BABYNAMES " +
                         "WHERE NAME =? " +
                         "AND GENDER =? " +
@@ -170,10 +169,10 @@ public class BabyNames {
 
         );
 
-        ps10.setString(1, "Joseph");
-        ps10.setString(2, "M");
+        preparedStatement10.setString(1, "Joseph");
+        preparedStatement10.setString(2, "M");
 
-        resultSet = ps10.executeQuery();
+        resultSet = preparedStatement10.executeQuery();
         printResults(resultSet);
 
     }
