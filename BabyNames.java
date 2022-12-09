@@ -4,20 +4,16 @@ public class BabyNames {
 
     public static void main(String[] args) throws SQLException {
 
-        // Create a new database connection
         Connection connection = DriverManager.getConnection(
                 "jdbc:derby:Resources/babynames", "user", "password");
 
-        // Use a regular statement to get 5 baby names
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(
                 "SELECT * FROM BABYNAMES FETCH FIRST 5 ROWS ONLY");
 
-        // Print the results
         System.out.println("Getting 5 Baby Names With A Regular Statement");
         printResults(resultSet);
 
-        // Get 5 names with a prepared statement
         PreparedStatement preparedStatement = connection.prepareStatement(
                 "SELECT * FROM BABYNAMES FETCH FIRST ? ROWS ONLY");
         preparedStatement.setInt(1, 5);
@@ -25,7 +21,6 @@ public class BabyNames {
 
         printResults(resultSet);
 
-        // Babynames assignment problem # 1
         System.out.println("\nWhat Was The Most Common Boy’s Name In Maryland In 1991?");
         PreparedStatement preparedStatement1 = connection.prepareStatement(
                 "SELECT * FROM BABYNAMES WHERE GENDER=? " +
